@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Python lib directory (but not frontend/src/lib)
+/lib/
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Project specific
+.env
+*.log
+
+# Generated files
+data/
+logs/
+static/
+
+# Telegram bot (not for public repo)
+telegram_bot/
+
+# OS
+.DS_Store
+Thumbs.db
+old_version.py
