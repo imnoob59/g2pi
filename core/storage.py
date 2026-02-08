@@ -1219,8 +1219,8 @@ async def toggle_generator_domain(domain: str, is_active: bool) -> bool:
 async def get_generator_domains(active_only: bool = True) -> list:
     """Ambil list domain generator.email dari database"""
     if not is_database_enabled():
-        # Fallback ke default domains
-        return ["yakali.me", "ydah.me", "ohgitu.me"]
+        # Fallback ke default domains (ganti dengan domain Anda!)
+        return ["yourdomain.com"]
     
     backend = _get_backend()
     try:
@@ -1244,8 +1244,8 @@ async def get_generator_domains(active_only: bool = True) -> list:
     except Exception as e:
         logger.error(f"[STORAGE] Get generator domains failed: {e}")
     
-    # Fallback
-    return ["yakali.me", "ydah.me", "ohgitu.me"]
+    # Fallback (ganti dengan domain Anda!)
+    return ["yourdomain.com"]
 
 
 def add_generator_domain_sync(domain: str) -> bool:

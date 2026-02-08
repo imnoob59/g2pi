@@ -72,7 +72,56 @@ ADMIN_KEY=Pasardigital26
 - Rate limit cooldown
 - Generator.Email domains (manage via database)
 
-### 3. Run Application
+### 3. Setup Custom Domain (WAJIB)
+
+> ⚠️ **PENTING**: Anda HARUS setup DNS MX record di domain Anda sendiri agar sistem temporary email berfungsi!
+
+Aplikasi ini menggunakan Generator.Email untuk registrasi otomatis. Anda perlu:
+
+**1. Beli/Gunakan Domain Anda Sendiri**
+- Beli domain murah (Namecheap, Cloudflare, dll)
+- Atau gunakan domain yang sudah Anda miliki
+- Contoh: `yourdomain.com`, `myemail.net`, dll
+
+**2. Setup DNS MX Record**
+
+Masuk ke DNS management provider Anda (Cloudflare/cPanel/dll), buat MX record:
+
+```
+Type: MX
+Name: @ (atau yourdomain.com)
+Mail Server: generator.email
+Priority: 1
+TTL: Auto
+```
+
+**Contoh di Cloudflare:**
+```
+Type: MX
+Name: yourdomain.com
+Content: generator.email
+Priority: 1
+Proxy status: DNS only
+TTL: Auto
+```
+
+**3. Tambahkan Domain ke Database**
+
+Setelah DNS propagate (5-30 menit), tambahkan domain Anda ke aplikasi:
+- Via Settings di aplikasi, atau
+- Via API endpoint `/api/generator-domains`
+
+**Verifikasi:**
+```bash
+# Cek MX record sudah benar
+nslookup -type=mx yourdomain.com
+
+# Harusnya muncul: yourdomain.com mail exchanger = 1 generator.email
+```
+
+✅ Setelah setup, email temporary akan menggunakan domain Anda (ex: `random123@yourdomain.com`)
+
+### 4. Run Application
 
 **Jalankan secara manual:**
 
@@ -136,9 +185,10 @@ GUI akan terbuka dan siap digunakan.
 
 ### Email Provider
 - **Generator.Email**: Default dan satu-satunya provider
-- Domain dikelola via database (yakali.me, ydah.me, ohgitu.me)
+- Domain dikelola via database (gunakan domain Anda sendiri!)
 - Tidak perlu API key - langsung baca OTP dari web
 - Auto-fallback ke domain lain jika satu domain gagal
+- **WAJIB setup DNS MX record** di domain Anda (lihat instruksi di atas)
 
 ### Rate Limit
 - **Chat Cooldown**: Default 2 jam

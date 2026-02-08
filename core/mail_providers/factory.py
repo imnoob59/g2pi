@@ -21,9 +21,15 @@ def create_temp_mail_client(
     # Ambil domains dari database
     domains = get_generator_domains_sync(active_only=True)
     
-    # Jika database kosong, auto-init dengan default domains
+    # Jika database kosong, warning - user harus setup domain sendiri!
     if not domains:
-        default_domains = ["yakali.me", "ydah.me", "ohgitu.me"]
+        # Domain example - GANTI dengan domain Anda sendiri via Settings atau API
+        default_domains = ["yourdomain.com"]  # ⚠️ Setup DNS MX record dulu!
+        
+        if log_cb:
+            log_cb("warning", "⚠️ Tidak ada domain di database! Tambahkan domain Anda yang sudah setup MX record ke generator.email")
+        
+        # Auto-add domain example (will fail until user adds real domain)
         for domain in default_domains:
             add_generator_domain_sync(domain)
         domains = default_domains

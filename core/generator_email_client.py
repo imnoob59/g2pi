@@ -23,7 +23,7 @@ class GeneratorEmailClient:
         log_callback=None,
     ) -> None:
         self.base_url = "https://generator.email"
-        self.domains = domains or ["yakali.me", "ydah.me", "ohgitu.me"]
+        self.domains = domains or ["yourdomain.com"]  # Setup your own domain with MX record!
         self.log_callback = log_callback
         
         self.email: Optional[str] = None

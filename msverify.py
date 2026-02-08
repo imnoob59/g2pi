@@ -2616,7 +2616,7 @@ class GeminiManagementApp(ctk.CTk):
             return
         
         dialog = ctk.CTkInputDialog(
-            text="Enter domain name (e.g., yakali.me):",
+            text="Enter domain name (e.g., yourdomain.com):",
             title="Add Domain"
         )
         domain = dialog.get_input()
