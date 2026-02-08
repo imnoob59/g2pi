@@ -68,9 +68,9 @@ ADMIN_KEY=Pasardigital26
 
 **Optional Settings** (bisa diatur di app Settings):
 - Proxy configuration
-- Temp mail provider (DuckMail, FreeMail, dll)
-- Browser settings
+- Browser settings (Headless mode, Engine)
 - Rate limit cooldown
+- Generator.Email domains (manage via database)
 
 ### 3. Run Application
 
@@ -134,11 +134,11 @@ GUI akan terbuka dan siap digunakan.
 - **Headless Mode**: Untuk server/VPS tanpa display
 - **Browser Engine**: UC (unstable) atau DP (stable, recommended)
 
-### Mail Provider
-- **DuckMail**: Cepat, reliable
-- **FreeMail**: Alternatif gratis
-- **GPTMail**: Custom domain support
-- **Moemail**: High availability
+### Email Provider
+- **Generator.Email**: Default dan satu-satunya provider
+- Domain dikelola via database (yakali.me, ydah.me, ohgitu.me)
+- Tidak perlu API key - langsung baca OTP dari web
+- Auto-fallback ke domain lain jika satu domain gagal
 
 ### Rate Limit
 - **Chat Cooldown**: Default 2 jam
